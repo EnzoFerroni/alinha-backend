@@ -36,8 +36,8 @@ public func configure(_ app: Application) async throws {
     let apnsConfig = APNSClientConfiguration(
         authenticationMethod: .jwt(
             privateKey: try .loadFrom(string: appleECP8PrivateKey),
-            keyIdentifier: "6C9K22WRJY",
-            teamIdentifier: "Carolina Sun Ramos Nantes de Castilho"
+            keyIdentifier: "BXSL76YQ56",
+            teamIdentifier: "Renata Leal"
         ),
         environment: .development
     )
@@ -47,25 +47,6 @@ public func configure(_ app: Application) async throws {
         responseDecoder: JSONDecoder(),
         requestEncoder: JSONEncoder(),
         as: .default
-    )
-    
-    // Custom Codable Payload
-    struct Payload: Codable {
-        let acme1: String
-        let acme2: Int
-    }
-    // Create push notification Alert
-    let dt = "REDACTED"
-    let payload = Payload(acme1: "hey", acme2: 2)
-    let alert = APNSAlertNotification(
-        alert: .init(
-            title: .raw("Hello"),
-            subtitle: .raw("This is a test from vapor/apns")
-        ),
-        expiration: .immediately,
-        priority: .immediately,
-        topic: "<#my topic#>",
-        payload: payload
     )
     
     app.middleware.use(cors, at: .beginning)
