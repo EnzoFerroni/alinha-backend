@@ -12,9 +12,7 @@ import Foundation
 // Custom Codable Payload
 struct Payload: Codable { }
 
-
-//let payload = PKPushPayload()
-let token = "REDACTED"
+//var token = "REDACTED"
 let alert = APNSAlertNotification(
     alert: .init(
         title: .raw("titulo"),
@@ -22,7 +20,7 @@ let alert = APNSAlertNotification(
     ),
     expiration: .immediately,
     priority: .immediately,
-    topic: "",
+    topic: "JonasMelo.Front",
     payload: Payload(),
     sound: .default
 )
