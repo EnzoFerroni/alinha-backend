@@ -23,23 +23,28 @@ public func configure(_ app: Application) async throws {
     let corsConfiguration = CORSMiddleware.Configuration(
         allowedOrigin: .all,
         allowedMethods: [.GET, .POST, .PUT, .PATCH, .DELETE],
-        allowedHeaders: [.accept, .authorization, .contentType, .origin, .xRequestedWith, .userAgent, .accessControlAllowOrigin]
+        allowedHeaders: [.accept, .authorization, .contentType, .origin, .xRequestedWith, .userAgent]
     )
     
     let cors = CORSMiddleware(configuration: corsConfiguration)
 
-    let appleECP8PrivateKey = """
-        REDACTED
-        """
-    
+    //TODO: ATUALIZAR CREDENCIAIS E VALORES DOS ID
+    // APNs credentials
+    let apnsPrivateKey = """
+    REDACTED
+    """
+    let apnsKeyId = "MUDAR"      // 10-char Key ID
+    let apnsTeamId = "TAMBEM"     // 10-char Team ID
+    let apnsEnvironment: APNSEnvironment = .development
+
     // Configure APNS using JWT authentication.
     let apnsConfig = APNSClientConfiguration(
         authenticationMethod: .jwt(
-            privateKey: try .loadFrom(string: appleECP8PrivateKey),
-            keyIdentifier: "BXSL76YQ56",
-            teamIdentifier: "Jonas Melo"
+            privateKey: try .loadFrom(string: apnsPrivateKey),
+            keyIdentifier: apnsKeyId,
+            teamIdentifier: apnsTeamId
         ),
-        environment: .development
+        environment: apnsEnvironment
     )
     app.apns.containers.use(
         apnsConfig,
