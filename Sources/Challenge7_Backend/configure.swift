@@ -28,8 +28,8 @@ public func configure(_ app: Application) async throws {
     
     let cors = CORSMiddleware(configuration: corsConfiguration)
 
-    //TODO: ATUALIZAR CREDENCIAIS E VALORES DOS ID
-    // APNs credentials
+    //MARK: APNS credentials
+    //TODO: Turn into enviroment vars
     let apnsPrivateKey = """
     REDACTED
     """
