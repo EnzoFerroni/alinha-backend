@@ -2,21 +2,21 @@
 
 # Alinha · Backend
 
-### The Swift (Vapor) REST API that powers the [Alinha](https://github.com/EnzoFerroni/Alinha-Project) mentorship queue. 🗓️
+### The Swift (Vapor) REST API that powers the [Alinha](https://github.com/EnzoFerroni/Alinha-Project) mentorship queue.
 
-The server-side half of **Alinha** — a full-stack mentorship queue system built by a
+The server-side half of **Alinha**: a full-stack mentorship queue system built by a
 ~30-person team. Students join the queue from **iOS**, mentors manage sessions on
-**macOS**, and a **tvOS** display shows the live queue — all talking to this single
+**macOS**, and a **tvOS** display shows the live queue, all talking to this single
 **Vapor** backend, backed by **PostgreSQL** and **APNs** push notifications.
 
 <br/>
 
-[![Swift](https://img.shields.io/badge/Swift_6-FA7343?style=for-the-badge&logo=swift&logoColor=white)](https://swift.org)
-[![Vapor](https://img.shields.io/badge/Vapor_4-0D0D0D?style=for-the-badge&logo=vapor&logoColor=white)](https://vapor.codes)
-[![Fluent](https://img.shields.io/badge/Fluent_ORM-2B9348?style=for-the-badge&logo=swift&logoColor=white)](https://docs.vapor.codes/fluent/overview/)
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org)
-[![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com)
-[![License](https://img.shields.io/badge/License-MIT-3DA639?style=for-the-badge)](LICENSE)
+[![Swift](https://img.shields.io/badge/Swift_6-FA7343?logo=swift&logoColor=white)](https://swift.org)
+[![Vapor](https://img.shields.io/badge/Vapor_4-0D0D0D?logo=vapor&logoColor=white)](https://vapor.codes)
+[![Fluent](https://img.shields.io/badge/Fluent_ORM-2B9348?logo=swift&logoColor=white)](https://docs.vapor.codes/fluent/overview/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?logo=postgresql&logoColor=white)](https://www.postgresql.org)
+[![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)](https://www.docker.com)
+[![License](https://img.shields.io/badge/License-MIT-3DA639)](LICENSE)
 
 **Part of the full project → [EnzoFerroni/Alinha-Project](https://github.com/EnzoFerroni/Alinha-Project) (backend + iOS · macOS · tvOS frontend together).**
 
@@ -24,39 +24,39 @@ The server-side half of **Alinha** — a full-stack mentorship queue system buil
 
 ---
 
-## 📑 Table of Contents
+## Table of Contents
 
-- [About](#-about)
-- [Architecture](#-architecture)
-- [Tech Stack](#-tech-stack)
-- [Project Structure](#-project-structure)
-- [Getting Started](#-getting-started)
-- [Environment Variables](#-environment-variables)
-- [API Reference](#-api-reference)
+- [About](#about)
+- [Architecture](#architecture)
+- [Tech Stack](#tech-stack)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+- [Environment Variables](#environment-variables)
+- [API Reference](#api-reference)
   - [Users](#users)
   - [Appointments](#appointments)
-- [Authentication & Roles](#-authentication--roles)
-- [My Role](#-my-role)
-- [Team](#-team)
-- [License](#-license)
+- [Authentication & Roles](#authentication--roles)
+- [My Role](#my-role)
+- [Team](#team)
+- [License](#license)
 
 ---
 
-## ✨ About
+## About
 
 **Alinha** records and manages mentorship appointments inside institutions (built in
 the context of the **Apple Developer Academy | Mackenzie**). It coordinates three
-roles — **admin**, **mentor** and **student** — around a live queue: a student
+roles (**admin**, **mentor** and **student**) around a live queue: a student
 requests help, the request enters a queue, a mentor picks it up, and the whole flow is
 tracked end to end.
 
-This repository holds the **backend** only. For the full product — including the iOS,
-macOS and tvOS clients — see the consolidated repo:
+This repository holds the **backend** only. For the full product, including the iOS,
+macOS and tvOS clients, see the consolidated repo:
 **[EnzoFerroni/Alinha-Project](https://github.com/EnzoFerroni/Alinha-Project)**.
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 A single Vapor backend exposes a REST API consumed by every platform client:
 
@@ -81,7 +81,7 @@ A single Vapor backend exposes a REST API consumed by every platform client:
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Layer | Technology |
 |---|---|
@@ -95,7 +95,7 @@ A single Vapor backend exposes a REST API consumed by every platform client:
 
 ---
 
-## 📦 Project Structure
+## Project Structure
 
 ```
 Alinha_Backend/
@@ -118,7 +118,7 @@ Alinha_Backend/
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Run with Docker (recommended)
 
@@ -153,9 +153,9 @@ curl http://localhost:8080/        # → "It works!"
 
 ---
 
-## 🔑 Environment Variables
+## Environment Variables
 
-Secrets are read from the environment — **nothing is hardcoded**. Copy the example
+Secrets are read from the environment, **nothing is hardcoded**. Copy the example
 file and fill in your own values:
 
 ```bash
@@ -164,19 +164,19 @@ cp .env.example .env
 
 | Variable | Required | Description |
 |---|:---:|---|
-| `DATABASE_HOST` / `DATABASE_PORT` | ⚪ | Postgres host/port (defaults to `localhost` / `5432`) |
-| `DATABASE_NAME` / `DATABASE_USERNAME` / `DATABASE_PASSWORD` | ⚪ | Postgres credentials (dev defaults in `docker-compose.yml`) |
-| `APNS_TOPIC` | 🔔 | App bundle id targeted by push notifications |
-| `APNS_PRIVATE_KEY` | 🔔 | Contents of your APNs Auth Key `.p8` (only to enable push) |
-| `APNS_KEY_ID` | 🔔 | 10-char Key ID of that key |
-| `APNS_TEAM_ID` | 🔔 | Your 10-char Apple Team ID |
+| `DATABASE_HOST` / `DATABASE_PORT` | Optional | Postgres host/port (defaults to `localhost` / `5432`) |
+| `DATABASE_NAME` / `DATABASE_USERNAME` / `DATABASE_PASSWORD` | Optional | Postgres credentials (dev defaults in `docker-compose.yml`) |
+| `APNS_TOPIC` | Push only | App bundle id targeted by push notifications |
+| `APNS_PRIVATE_KEY` | Push only | Contents of your APNs Auth Key `.p8` (only to enable push) |
+| `APNS_KEY_ID` | Push only | 10-char Key ID of that key |
+| `APNS_TEAM_ID` | Push only | Your 10-char Apple Team ID |
 
-> Push notifications are **optional** — if the `APNS_*` variables aren't set, the app
+> Push notifications are **optional**: if the `APNS_*` variables aren't set, the app
 > runs with APNs disabled. **Never commit your `.p8` or these values.**
 
 ---
 
-## 🔌 API Reference
+## API Reference
 
 Base URL: `http://localhost:8080`. All bodies are JSON. Roles: `adm` · `mentor` · `student`.
 
@@ -184,17 +184,17 @@ Base URL: `http://localhost:8080`. All bodies are JSON. Roles: `adm` · `mentor`
 
 | Method | Path | Auth | Description |
 |---|---|:---:|---|
-| `GET` | `/users` | — | List all users |
-| `GET` | `/users/:id` | — | Fetch one user by id |
-| `POST` | `/users` | — | Create a user |
+| `GET` | `/users` | None | List all users |
+| `GET` | `/users/:id` | None | Fetch one user by id |
+| `POST` | `/users` | None | Create a user |
 | `POST` | `/users/login` | Basic | Log in (HTTP Basic) and return the user |
-| `PATCH` | `/users/updateName` | — | Update a user's name |
-| `PATCH` | `/users/updateUserAvailable` | — | Toggle a mentor's availability |
-| `PATCH` | `/users/updateRole` | 🔒 admin | Change a user's role |
-| `DELETE` | `/users/:id` | 🔒 admin | Delete a user |
+| `PATCH` | `/users/updateName` | None | Update a user's name |
+| `PATCH` | `/users/updateUserAvailable` | None | Toggle a mentor's availability |
+| `PATCH` | `/users/updateRole` | Admin | Change a user's role |
+| `DELETE` | `/users/:id` | Admin | Delete a user |
 
 <details>
-<summary><b>Create user — request / response</b></summary>
+<summary><b>Create user, request / response</b></summary>
 
 ```jsonc
 // POST /users
@@ -217,18 +217,18 @@ Returns `400 Bad Request` if the password confirmation doesn't match.
 
 | Method | Path | Auth | Description |
 |---|---|:---:|---|
-| `GET` | `/appointments` | — | List all appointments |
-| `GET` | `/appointments/:id` | — | Fetch one appointment by id |
-| `POST` | `/appointments` | — | Create an appointment |
-| `PATCH` | `/appointments/place` | 🔒 adm/mentor | Update the appointment place |
-| `PATCH` | `/appointments/isScheduled` | 🔒 adm/mentor | Update scheduled status |
-| `PATCH` | `/appointments/callStudent` | 🔒 adm/mentor | Call/uncall the student |
-| `PATCH` | `/appointments/isDone` | 🔒 adm/mentor | Mark as done |
-| `PATCH` | `/appointments/mentor` | 🔒 adm/mentor | Reassign the mentor |
-| `DELETE` | `/appointments/:id` | 🔒 adm/mentor | Delete an appointment |
+| `GET` | `/appointments` | None | List all appointments |
+| `GET` | `/appointments/:id` | None | Fetch one appointment by id |
+| `POST` | `/appointments` | None | Create an appointment |
+| `PATCH` | `/appointments/place` | Admin or mentor | Update the appointment place |
+| `PATCH` | `/appointments/isScheduled` | Admin or mentor | Update scheduled status |
+| `PATCH` | `/appointments/callStudent` | Admin or mentor | Call/uncall the student |
+| `PATCH` | `/appointments/isDone` | Admin or mentor | Mark as done |
+| `PATCH` | `/appointments/mentor` | Admin or mentor | Reassign the mentor |
+| `DELETE` | `/appointments/:id` | Admin or mentor | Delete an appointment |
 
 <details>
-<summary><b>Create appointment — request / response</b></summary>
+<summary><b>Create appointment, request / response</b></summary>
 
 ```jsonc
 // POST /appointments
@@ -266,23 +266,23 @@ Returns `400 Bad Request` if the password confirmation doesn't match.
 
 ---
 
-## 🔐 Authentication & Roles
+## Authentication & Roles
 
 Protected routes use **HTTP Basic authentication** (Vapor's `User.authenticator()`)
 plus a role middleware:
 
-- **`AdminOnlyMiddleware`** — only `adm` users (e.g. change roles, delete users).
-- **`AdmMentorMiddleware`** — `adm` **or** `mentor` users (manage appointments).
+- **`AdminOnlyMiddleware`**: only `adm` users (e.g. change roles, delete users).
+- **`AdmMentorMiddleware`**: `adm` **or** `mentor` users (manage appointments).
 
 Open routes (listing, creating users/appointments, login) require no auth.
 
 ---
 
-## 🙋 My Role
+## My Role
 
 I was part of the **initial backend team** (Enzo, Rafael, Pedro Tessaro and João
-Vitor). I focused mainly on the **Docker setup** — the `Dockerfile` and
-`docker-compose` orchestrating the Vapor app with PostgreSQL — and on building the
+Vitor). I focused mainly on the **Docker setup**: the `Dockerfile` and
+`docker-compose` orchestrating the Vapor app with PostgreSQL, and on building the
 **REST routes** (users & appointments endpoints with Fluent). Later I moved to the
 frontend (macOS, then iOS) and finally to backend integration. See the
 [full project README](https://github.com/EnzoFerroni/Alinha-Project) for the complete
@@ -290,9 +290,9 @@ story.
 
 ---
 
-## 👥 Team
+## Team
 
-Backend squad — it started as Enzo, Rafael, Pedro Tessaro and João Vitor; later Enzo
+Backend squad, it started as Enzo, Rafael, Pedro Tessaro and João Vitor; later Enzo
 and Pedro Tessaro moved to the frontend, and Carolina and Dayô joined, so all six
 contributed across the project.
 
@@ -337,16 +337,11 @@ contributed across the project.
   </tr>
 </table>
 
-<sub>Built by a ~30-person team at the <b>Apple Developer Academy | Mackenzie</b>. 💛</sub>
+<sub>Built by a ~30-person team at the <b>Apple Developer Academy | Mackenzie</b>. </sub>
 
 ---
 
-## 📄 License
+## License
 
-Released under the [MIT License](LICENSE). © 2025 the Alinha team — Apple Developer
+Released under the [MIT License](LICENSE). © 2025 the Alinha team, Apple Developer
 Academy | Mackenzie.
-
-<div align="center">
-<br/>
-<sub>Built with ☕, Swift and a lot of agile ceremonies.</sub>
-</div>
